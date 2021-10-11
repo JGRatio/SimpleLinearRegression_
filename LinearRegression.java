@@ -16,27 +16,9 @@ private int n = x.length;
     
 public LinearRegression(){
  
-  doIt(); 
+  calculate(); 
    
 }
-
-    public double getSummX() {
-        return summX;
-    }
-
-    public double getSummY() {
-        return summY;
-    }
-
-
-    public double getSummXY() {
-        return summXY;
-    }
-
-
-    public double getSummX2() {
-        return summX2;
-    }
 
     public double getB0() {
         return B0;
@@ -47,15 +29,15 @@ public LinearRegression(){
         return B1;
     }
 
-    public void doIt(){
-
+    public void calculate(){
+    //for cycle for sumations 
     for(int i = 0; i < x.length ; i++ ){
     summX += x[i];
     summY += y[i];
     summXY += x[i] * y[i];
     summX2 += x[i] * x[i];
     }
-
+    //operations for crammer determinants
     B0 = ( (summY * summX2) - (summX * summXY) ) / ( (n * summX2) - (summX * summX) );
     B1 = ( (n * summXY) - (summY * summX) ) / ( (n * summX2) - (summX * summX) );   
    }
